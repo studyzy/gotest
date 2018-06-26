@@ -1,0 +1,31 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "II3c5ZDrnvU+ZN/5r6CKQc8Sqbw=",
+			"path": "github.com/facebookgo/inject",
+			"revision": "cc1aa653e50f6a9893bcaef89e673e5b24e1e97b",
+			"revisionTime": "2016-10-06T17:47:21Z"
+		},
+		{
+			"checksumSHA1": "3QW89DuQh3wqK3GUfaJ4Up2oo5o=",
+			"path": "github.com/facebookgo/structtag",
+			"revision": "217e25fb96916cc60332e399c9aa63f5c422ceed",
+			"revisionTime": "2015-02-14T07:43:06Z"
+		},
+		{
+			"checksumSHA1": "Ir3s/8Q+8qJ0leCGpeTd/lsNs5M=",
+			"path": "github.com/golang/mock/gomock",
+			"revision": "22bbf0ddf08105dfa364d0a2fa619dfa71014af5",
+			"revisionTime": "2018-05-03T01:48:54Z"
+		},
+		{
+			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",
+			"path": "golang.org/x/net/context",
+			"revision": "afe8f62b1d6bbd81f31868121a50b06d8188e1f9",
+			"revisionTime": "2018-06-20T20:20:43Z"
+		}
+	],
+	"rootPath": "github.com/studyzy/gotest"
+}
