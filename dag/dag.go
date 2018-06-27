@@ -1,6 +1,7 @@
 package dag
 
 import (
+	"fmt"
 	"github.com/studyzy/gotest/core"
 )
 
@@ -11,4 +12,7 @@ func (dag *Dag) GetSystemConfig(key string) string {
 }
 func (dag *Dag) WriteUnit(unit core.Unit) {
 
+}
+func init() {
+	fmt.Println("dag-init() come here.")
 }
