@@ -27,4 +27,5 @@ func main() {
 	var a = new(Address)
 	a[0] = byte('1')
 	fmt.Println(a.Hex())
+
 }
