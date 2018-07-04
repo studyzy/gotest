@@ -7,13 +7,13 @@ import (
 	"encoding/asn1"
 	"encoding/hex"
 	"fmt"
+	"os"
+
+	"github.com/spf13/viper"
 
 	"math/big"
 
-	"github.com/facebookgo/inject"
-	"github.com/studyzy/gotest/consensus"
 	_ "github.com/studyzy/gotest/core"
-	"github.com/studyzy/gotest/dag"
 )
 
 type Address [32]byte
@@ -22,17 +22,45 @@ func (a Address) Hex() string { return fmt.Sprintf("0x%x", a) }
 func main() {
 	fmt.Println("Hello World!")
 
-	var dag = new(dag.Dag)
-	var g inject.Graph
-	var m consensus.Mediator
-	g.Provide(
-		&inject.Object{Value: &m},
-		&inject.Object{Value: dag})
-	g.Populate()
+	// var dag = new(dag.Dag)
+	// var g inject.Graph
+	// var m consensus.Mediator
+	// g.Provide(
+	// 	&inject.Object{Value: &m},
+	// 	&inject.Object{Value: dag})
+	// g.Populate()
 
-	fmt.Println(m.ReadSystemConfig("Count"))
-	SignAndVerify()
+	// fmt.Println(m.ReadSystemConfig("Count"))
+	// SignAndVerify()
+	viperTest()
 }
+
+func viperTest() {
+	v := viper.New()
+	v.SetConfigName("palletone")
+	v.SetConfigType("toml")
+	v.AddConfigPath(".")
+	v.AutomaticEnv()
+	if err := v.ReadInConfig(); err != nil {
+		fmt.Printf("couldn't load config: %s", err)
+		os.Exit(1)
+	}
+	var c Config
+	if err := v.Unmarshal(&c); err != nil {
+		fmt.Printf("couldn't read config: %s", err)
+	}
+	v.Set("output.File.Path.FullPath","D:\\Temp")
+	v.Set("output.File.Path.Folder","Temp")
+	fmt.Println("newPassword:"+ os.ExpandEnv(c.Db.Pass))
+	fmt.Printf("host=%s port=%s user=%s pass=%s\n", c.Db.Host, c.Db.Port, c.Db.User, c.Db.Pass)
+	fmt.Printf("output=%s\n", c.Out.File.Path.Folder)
+	fmt.Printf("%#v", c)
+	//c.Out.File.Path.Folder="newpath.txt"
+
+	v.WriteConfigAs("new.toml")
+
+}
+
 func SignAndVerify() {
 	pubkeyCurve := elliptic.P256() //see http://golang.org/pkg/crypto/elliptic/#P256
 

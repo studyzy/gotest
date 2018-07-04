@@ -1,0 +1,14 @@
+
+[database]
+  hostname = "localhost"
+  password = "${http_proxy}"
+  port = 5432
+  username = "postgres"
+
+[output]
+
+  [output.file]
+
+    [output.file.path]
+      fullpath = "D:\\Temp"
+
