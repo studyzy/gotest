@@ -12,9 +12,13 @@ import (
 
 	"github.com/facebookgo/inject"
 	"github.com/studyzy/gotest/consensus"
+	_ "github.com/studyzy/gotest/core"
 	"github.com/studyzy/gotest/dag"
 )
 
+type Address [32]byte
+
+func (a Address) Hex() string { return fmt.Sprintf("0x%x", a) }
 func main() {
 	fmt.Println("Hello World!")
 
